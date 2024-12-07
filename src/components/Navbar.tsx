@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Archive } from "lucide-react";
 import { AuthModal } from "./AuthModal";
+import { useUserContext } from "../Security/user/UserContext";
+import { useAxios } from "../Security/axios/AxiosProvider";
 
 export function Navbar() {
   const [isAuthModalOpen, setAuthModalOpen] = useState(false);
+  const { setUserData, isUser } = useUserContext();
+  console.log(isUser);
+
+  const apiClient = useAxios();
 
   return (
     <>
@@ -29,12 +35,37 @@ export function Navbar() {
               >
                 Pricing
               </a>
-              <button
-                onClick={() => setAuthModalOpen(true)}
-                className="px-4 py-2 rounded-lg text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 transition"
-              >
-                Login
-              </button>
+              {isUser && (
+                <a
+                  href="/dashboard"
+                  className="text-gray-300 hover:text-purple-500 transition"
+                >
+                  Dashboard
+                </a>
+              )}
+
+              {!isUser && (
+                <button
+                  onClick={() => setAuthModalOpen(true)}
+                  className="px-4 py-2 rounded-lg text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 transition"
+                >
+                  Login
+                </button>
+              )}
+              {isUser && (
+                <button
+                  onClick={async () => {
+                    const response = await apiClient.post("/auth/logout");
+                    if (response.status === 200) {
+                      localStorage.removeItem("accessToken");
+                      setUserData({} as any);
+                    }
+                  }}
+                  className="px-4 py-2 rounded-lg text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 transition"
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>

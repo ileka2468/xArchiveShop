@@ -44,7 +44,7 @@ export function Pricing() {
             price="$12.99"
             period="month"
             features={[
-              "Backup an unlimited number of X accounts",
+              "Backup an unlimited number of X accounts simultaneously",
               "Realtime sync",
               "Daily account snapshots",
               "Priority support",
