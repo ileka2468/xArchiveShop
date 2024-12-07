@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowDownToLine } from "lucide-react";
 
 export function HeroAnimation() {
@@ -64,7 +64,7 @@ export function HeroAnimation() {
         return (
           <div
             key={i}
-            className="absolute animate-float opacity-50"
+            className="absolute animate-float opacity-80"
             style={{
               top: `calc(50% + ${y}px)`,
               left: `calc(50% + ${x}px)`,

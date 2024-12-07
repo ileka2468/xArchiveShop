@@ -1,10 +1,9 @@
-import React from "react";
 import { Shield, Database, Clock } from "lucide-react";
 import { HeroAnimation } from "./HeroAnimation";
 
 export function Hero() {
   return (
-    <div className="relative bg-black text-white pt-24 pb-16">
+    <div id="" className="relative bg-black text-white pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-5xl font-bold tracking-tight bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">

@@ -1,12 +1,4 @@
-import React from "react";
-import {
-  Archive,
-  Search,
-  Download,
-  Clock,
-  Shield,
-  Database,
-} from "lucide-react";
+import { Archive, Search, Clock, Shield, Database } from "lucide-react";
 
 export function Features() {
   const features = [
