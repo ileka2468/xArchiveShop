@@ -22,7 +22,7 @@ export function Dashboard() {
             to="/dashboard/account"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            Account Center
+            Manage Account
           </Link>
           <Link
             to="/dashboard/payments"
@@ -34,13 +34,13 @@ export function Dashboard() {
             to="/dashboard/downloads"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            Download Center
+            Downloads
           </Link>
           <Link
             to="/dashboard/licenses"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            License Center
+            Licenses
           </Link>
         </nav>
       </aside>
