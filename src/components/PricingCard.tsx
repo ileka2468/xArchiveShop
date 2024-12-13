@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { useUserContext } from "../Security/user/UserContext";
 
 interface PricingCardProps {
   title: string;
@@ -7,6 +8,8 @@ interface PricingCardProps {
   features: string[];
   popular?: boolean;
   highlight?: string;
+  priceId: string;
+  onPurchaseClick: (priceId: string) => void;
 }
 
 export function PricingCard({
@@ -16,7 +19,11 @@ export function PricingCard({
   features,
   popular,
   highlight,
+  priceId,
+  onPurchaseClick,
 }: PricingCardProps) {
+  const { isUser } = useUserContext();
+
   return (
     <div
       className={`relative rounded-2xl ${
@@ -55,8 +62,18 @@ export function PricingCard({
             ? "bg-purple-500 hover:bg-purple-600 text-white"
             : "bg-zinc-800 hover:bg-zinc-700 text-gray-300"
         }`}
+        onClick={() => {
+          if (!isUser) {
+            return; // TODO later add logic to redirect to login or signup
+          }
+          onPurchaseClick(priceId);
+        }}
       >
-        Get Started
+        {!isUser
+          ? "Get Started"
+          : period
+          ? `Purchase ${title} Subscription`
+          : "Purchase " + title}
       </button>
     </div>
   );
