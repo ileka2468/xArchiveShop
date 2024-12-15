@@ -28,7 +28,7 @@ export function Dashboard() {
             to="/dashboard/payments"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            Payment Center
+            Payments
           </Link>
           <Link
             to="/dashboard/downloads"
@@ -46,7 +46,7 @@ export function Dashboard() {
       </aside>
 
       {/* Content */}
-      <main className="ml-64 p-8 pt-20 flex-1">
+      <main className="ml-64 p-8 pt-20 flex-1 overflow-auto">
         <Routes>
           <Route path="/" element={<DashboardHome />} />
           <Route path="account" element={<AccountCenter />} />
