@@ -29,7 +29,7 @@ export function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               {isLandingPage ? (
-                <a href="#hero" className="ml-2 text-xl font-bold text-white">
+                <a href="#" className="ml-2 text-xl font-bold text-white">
                   <span className="flex justify-evenly items-center">
                     <Archive className="w-8 h-8 text-purple-500 m-1" />
                     xArchive
