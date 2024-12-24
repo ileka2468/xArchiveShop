@@ -5,6 +5,10 @@ export function Pricing() {
   const apiClient = useAxios();
 
   const onPurchaseClick = async (priceId: string) => {
+    alert(
+      "Purchases are currently disabled as we continue development. Please check back later."
+    );
+    return; // TEMP DISABLE PURCHASES
     try {
       const response = await apiClient.post(
         "/billing/create-checkout-session",
