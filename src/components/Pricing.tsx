@@ -1,6 +1,30 @@
 import { PricingCard } from "./PricingCard";
+import { useAxios } from "../Security/axios/AxiosProvider";
 
 export function Pricing() {
+  const apiClient = useAxios();
+
+  const onPurchaseClick = async (priceId: string) => {
+    alert(
+      "Purchases are currently disabled as we continue development. Please check back later."
+    );
+    return; // TEMP DISABLE PURCHASES
+    try {
+      const response = await apiClient.post(
+        "/billing/create-checkout-session",
+        {
+          priceId,
+        }
+      );
+
+      if (response.status === 200) {
+        const data = response.data;
+        window.location.href = data.url;
+      }
+    } catch (error: any) {
+      console.error("An error occurred: " + error.response);
+    }
+  };
   return (
     <section id="pricing" className="bg-black py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +40,7 @@ export function Pricing() {
           <div className="max-w-lg mx-auto">
             <PricingCard
               title="Lifetime License"
-              price="$99"
+              price="$45"
               features={[
                 "One-time payment",
                 "Lifetime access to xArchive",
@@ -25,6 +49,8 @@ export function Pricing() {
                 "Free updates throughout application life",
               ]}
               highlight="Best Value"
+              priceId="price_1QTxNYGYxMWOnGCC5PfAcJg6"
+              onPurchaseClick={onPurchaseClick}
             />
           </div>
         </div>
@@ -53,6 +79,8 @@ export function Pricing() {
               "Cancel anytime",
             ]}
             popular
+            priceId="price_1QTxPfGYxMWOnGCCuG8qBoo3"
+            onPurchaseClick={onPurchaseClick}
           />
 
           <PricingCard
@@ -67,6 +95,8 @@ export function Pricing() {
               "Automated backup scheduling",
               "Cancel anytime",
             ]}
+            priceId="price_1QTxROGYxMWOnGCCdBslRmIO"
+            onPurchaseClick={onPurchaseClick}
           />
         </div>
       </div>

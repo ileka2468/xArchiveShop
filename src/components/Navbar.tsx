@@ -1,18 +1,26 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Archive } from "lucide-react";
 import { AuthModal } from "./AuthModal";
 import { useUserContext } from "../Security/user/UserContext";
 import { useAxios } from "../Security/axios/AxiosProvider";
-import { useLocation } from "react-router-dom";
 
 export function Navbar() {
   const [isAuthModalOpen, setAuthModalOpen] = useState(false);
   const { setUserData, isUser } = useUserContext();
   const apiClient = useAxios();
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   const isLandingPage = pathname === "/";
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
 
   return (
     <>
@@ -37,18 +45,37 @@ export function Navbar() {
               )}
             </div>
             <div className="flex items-center space-x-4">
-              <a
-                href="#features"
-                className="text-gray-300 hover:text-purple-500 transition"
-              >
-                Features
-              </a>
-              <a
-                href="#pricing"
-                className="text-gray-300 hover:text-purple-500 transition"
-              >
-                Pricing
-              </a>
+              {!isLandingPage ? (
+                <Link
+                  to="/#features"
+                  className="text-gray-300 hover:text-purple-500 transition"
+                >
+                  Features
+                </Link>
+              ) : (
+                <a
+                  href="#features"
+                  className="text-gray-300 hover:text-purple-500 transition"
+                >
+                  Features
+                </a>
+              )}
+
+              {!isLandingPage ? (
+                <Link
+                  to="/#pricing"
+                  className="text-gray-300 hover:text-purple-500 transition"
+                >
+                  Pricing
+                </Link>
+              ) : (
+                <a
+                  href="#pricing"
+                  className="text-gray-300 hover:text-purple-500 transition"
+                >
+                  Pricing
+                </a>
+              )}
               {isUser && (
                 <Link
                   to="/dashboard"

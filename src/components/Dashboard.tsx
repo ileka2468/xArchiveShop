@@ -22,31 +22,31 @@ export function Dashboard() {
             to="/dashboard/account"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            Account Center
+            Manage Account
           </Link>
           <Link
             to="/dashboard/payments"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            Payment Center
+            Payments
           </Link>
           <Link
             to="/dashboard/downloads"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            Download Center
+            Downloads
           </Link>
           <Link
             to="/dashboard/licenses"
             className="block px-4 py-2 rounded hover:bg-zinc-800"
           >
-            License Center
+            Licenses
           </Link>
         </nav>
       </aside>
 
       {/* Content */}
-      <main className="ml-64 p-8 pt-20 flex-1">
+      <main className="ml-64 p-8 pt-20 flex-1 overflow-auto">
         <Routes>
           <Route path="/" element={<DashboardHome />} />
           <Route path="account" element={<AccountCenter />} />
