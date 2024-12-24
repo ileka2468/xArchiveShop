@@ -40,7 +40,7 @@ export function Pricing() {
           <div className="max-w-lg mx-auto">
             <PricingCard
               title="Lifetime License"
-              price="$70"
+              price="$45"
               features={[
                 "One-time payment",
                 "Lifetime access to xArchive",
